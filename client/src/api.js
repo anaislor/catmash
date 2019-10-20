@@ -30,6 +30,13 @@ export default {
       .catch(err => console.log(err))
   },
 
+  updateVote(id, score) {
+    return service
+      .post('/voteForCat' + id, { score })
+      .then(response => response.data)
+      .catch(err => console.log(err))
+  },
+
   // // This method is synchronous and returns true or false
   // // To know if the user is connected, we just check if we have a value for localStorage.getItem('user')
   // isLoggedIn() {

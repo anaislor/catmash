@@ -10,4 +10,10 @@ router.get('/allCats', (req, res, next) => {
     .catch(err => console.log(err))
 })
 
+router.post('/voteForCat:id', (req, res) => {
+  CatsModel.findByIdAndUpdate(req.params.id, { score: req.body.score })
+    .then(dbRes => res.send(dbRes))
+    .catch(err => console.log(err))
+})
+
 module.exports = router
