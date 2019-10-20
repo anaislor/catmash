@@ -1,26 +1,25 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import MainNavbar from './MainNavbar'
-import Home from './pages/Home'
-import Countries from './pages/Countries'
-import AddCountry from './pages/AddCountry'
-import Secret from './pages/Secret'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
+import './../css/App.css'
+import { Switch, NavLink, Route } from 'react-router-dom'
+import Home from './Home'
+import VotePage from './VotePage'
+import ScorePage from './ScorePage'
 
-export default function App() {
+function App() {
   return (
     <div className="App">
-      <MainNavbar />
+      <nav>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/vote">Vote</NavLink>
+        <NavLink to="/scoring">Scoring</NavLink>
+      </nav>
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/countries" component={Countries} />
-        <Route path="/add-country" component={AddCountry} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
-        <Route path="/secret" component={Secret} />
-        <Route render={() => <h2>404</h2>} />
+        <Route path="/" exact component={Home}></Route>
+        <Route path="/vote" component={VotePage}></Route>
+        <Route path="/scoring" component={ScorePage}></Route>
       </Switch>
     </div>
   )
 }
+
+export default App
