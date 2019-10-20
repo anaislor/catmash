@@ -1,0 +1,31 @@
+#scorePage {
+  padding-top: 20vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  background: #f7f7f7;
+}
+
+#scorePage h1 {
+  width: 100%;
+}
+
+.catDetail {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.catDetail p {
+  padding: 10px;
+  color: #3b5163;
+}
+
+.catDetailImage {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}

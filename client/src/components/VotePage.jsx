@@ -13,7 +13,6 @@ function VotePage() {
     let randomNumber = Math.floor(Math.random() * array.length)
     let randomCat = array[randomNumber]
     if (allCats.length) {
-      console.log(catsAlreadyDisplayed.includes(randomCat.id))
       if (
         catsAlreadyDisplayed.includes(randomCat) &&
         catsAlreadyDisplayed.length
@@ -67,12 +66,11 @@ function VotePage() {
   }
 
   return (
-    <div>
-      <h1>Cat Mash Vote</h1>
-      <div onClick={handleOnclickCat1}>
+    <div id="catVote">
+      <div onClick={handleOnclickCat1} className="columnCatVote left">
         <CatFace cat={catsOnVote1} />
       </div>
-      <div onClick={handleOnclickCat2}>
+      <div onClick={handleOnclickCat2} className="columnCatVote right">
         <CatFace cat={catsOnVote2} />
       </div>
     </div>

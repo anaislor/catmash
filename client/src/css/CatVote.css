@@ -1,0 +1,41 @@
+#catVote {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#catVote h1 {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.columnCatVote {
+  padding-top: 200px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh;
+}
+
+.columnCatVote.right {
+  background-color: #edf0f0;
+}
+
+.columnCatVote.left {
+  background-color: #f7f7f7;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 280px;
+  overflow: hidden;
+}
+
+.imageContainer img {
+  width: 80%;
+}

@@ -5,7 +5,7 @@ function CatFace(props) {
   let cat = props.cat
 
   return (
-    <div>
+    <div className="imageContainer">
       <img src={cat.url} alt="cat" />
     </div>
   )

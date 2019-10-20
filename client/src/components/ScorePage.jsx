@@ -16,16 +16,19 @@ function ScorePage() {
   }, [])
 
   return (
-    <div>
+    <div id="scorePage">
+      <h1>Score</h1>
       {allCats
         .sort((cat1, cat2) => {
           if (cat1.score > cat2.score) return -1
           return 1
         })
         .map((cat, i) => (
-          <div key={i}>
-            <img src={cat.url} alt="cat" />
-            <p>{cat.score}</p>
+          <div key={i} className="catDetail">
+            <div className="catDetailImage">
+              <img src={cat.url} alt="cat" />
+            </div>
+            <p>Number of votes: {cat.score}</p>
           </div>
         ))}
     </div>
