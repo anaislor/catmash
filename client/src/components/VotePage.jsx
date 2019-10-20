@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import CatFace from './CatFace'
 import api from '../api'
-import { readdirSync } from 'fs'
 
 function VotePage() {
   const [allCats, setAllCats] = useState([])
-  const [catsOnVote, setCatsOnVote] = useState([])
+  const [catsOnVote1, setCatsOnVote1] = useState([])
+  const [catsOnVote2, setCatsOnVote2] = useState([])
 
   function randomCats(array) {
     let randomNumber = Math.floor(Math.random() * array.length)
@@ -24,17 +24,30 @@ function VotePage() {
   }, [])
 
   useEffect(() => {
-    setCatsOnVote([randomCats(allCats), randomCats(allCats)])
+    setCatsOnVote1(randomCats(allCats))
+    setCatsOnVote2(randomCats(allCats))
   }, [allCats])
+
+  //ONCLICK
+  function handleOnclickCat1(event) {
+    setCatsOnVote2(randomCats(allCats))
+  }
+
+  function handleOnclickCat2(event) {
+    setCatsOnVote1(randomCats(allCats))
+  }
 
   return (
     <div>
       <h1>Cat Mash Vote</h1>
       <pre>{JSON.stringify(allCats)}</pre>
-      <pre>{JSON.stringify(catsOnVote)}</pre>
-      <div></div>
-      <div>
-        <CatFace cat={catsOnVote} />
+      <pre>{JSON.stringify(catsOnVote1)}</pre>
+      <pre>{JSON.stringify(catsOnVote2)}</pre>
+      <div onClick={handleOnclickCat1}>
+        <CatFace cat={catsOnVote1} />
+      </div>
+      <div onClick={handleOnclickCat2}>
+        <CatFace cat={catsOnVote2} />
       </div>
     </div>
   )

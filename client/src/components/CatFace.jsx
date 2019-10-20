@@ -1,12 +1,12 @@
 import React from 'react'
 
 function CatFace(props) {
+  if (!props.cat) return null
   let cat = props.cat
 
   return (
     <div>
-      Hello
-      <pre>{JSON.stringify(cat)}</pre>
+      <img src={cat.url} alt="cat" />
     </div>
   )
 }

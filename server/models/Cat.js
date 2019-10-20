@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const cat = new Schema({
   url: String,
   id: String,
-  vote: Number,
+  score: { type: Number, default: 0 },
 })
 
 const Cats = mongoose.model('Cats', cat)
