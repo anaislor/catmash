@@ -1,5 +1,6 @@
 @import url('./CatVote.css');
 @import url('./ScorePage.css');
+@import url('./responsive.css');
 
 * {
   box-sizing: border-box;

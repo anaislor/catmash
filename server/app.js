@@ -8,8 +8,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const logger = require('morgan')
 const nocache = require('nocache')
-// const session = require('express-session')
-// const MongoStore = require('connect-mongo')(session)
 
 require('./configs/database')
 
@@ -37,24 +35,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-// Set the public folder to "~/client/build/"
-// Example: http://localhost:5000/favicon.ico => Display "~/client/build/favicon.ico"
 app.use(express.static(path.join(__dirname, '../client/build')))
 
-// Enable authentication using session + passport
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET || 'irongenerator',
-//     resave: true,
-//     saveUninitialized: true,
-//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//   })
-// )
-// require('./passport')(app)
-
 app.use('/api', require('./routes/index'))
-// app.use('/api', require('./routes/auth'))
-app.use('/api/countries', require('./routes/countries'))
 
 // For any routes that starts with "/api", catch 404 and forward to error handler
 app.use('/api/*', (req, res, next) => {

@@ -7,6 +7,7 @@ function VotePage() {
   const [catsAlreadyDisplayed, setCatsAlreadyDisplayed] = useState([])
   const [catsOnVote1, setCatsOnVote1] = useState([])
   const [catsOnVote2, setCatsOnVote2] = useState([])
+  const [message, setMessage] = useState('')
 
   //Pour afficher les chats de manière aléatoire tout en évitant qu'un chat déjà apparu ne réapparaisse
   function randomCats(array) {
@@ -19,6 +20,10 @@ function VotePage() {
       ) {
         console.log('already appeared')
         return randomCats(allCats)
+      }
+      if (allCats.length === catsAlreadyDisplayed.length) {
+        setMessage("Oops, il n'y a plus de chat en compétition")
+        return
       } else return randomCat
     }
   }
@@ -68,10 +73,10 @@ function VotePage() {
   return (
     <div id="catVote">
       <div onClick={handleOnclickCat1} className="columnCatVote left">
-        <CatFace cat={catsOnVote1} />
+        {message || <CatFace cat={catsOnVote1} />}
       </div>
       <div onClick={handleOnclickCat2} className="columnCatVote right">
-        <CatFace cat={catsOnVote2} />
+        {message || <CatFace cat={catsOnVote2} />}
       </div>
     </div>
   )

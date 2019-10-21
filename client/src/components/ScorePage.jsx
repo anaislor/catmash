@@ -17,7 +17,7 @@ function ScorePage() {
 
   return (
     <div id="scorePage">
-      <h1>Score</h1>
+      <h1>Les plus beaux chats</h1>
       {allCats
         .sort((cat1, cat2) => {
           if (cat1.score > cat2.score) return -1
@@ -28,7 +28,7 @@ function ScorePage() {
             <div className="catDetailImage">
               <img src={cat.url} alt="cat" />
             </div>
-            <p>Number of votes: {cat.score}</p>
+            <p>Nombre de votes: {cat.score}</p>
           </div>
         ))}
     </div>
