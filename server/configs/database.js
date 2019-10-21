@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const uri =
   process.env.MONGODB_URI ||
   `mongodb://localhost/please-set-process-env-mongodb-uri`
-
+console.log('yolo')
 mongoose
   .connect(uri, { useNewUrlParser: true })
   .then(x => {
