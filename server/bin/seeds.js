@@ -1,5 +1,5 @@
-const path = require('path')
-require('dotenv').config({ path: path.join(__dirname, '../.env') })
+// const path = require('path')
+// require('dotenv').config({ path: path.join(__dirname, '../.env') })
 
 // To execute this seed, run from the root of the project
 // $ node bin/seeds.js
@@ -7,7 +7,7 @@ require('dotenv').config({ path: path.join(__dirname, '../.env') })
 const CatsModel = require('./../models/Cat')
 const axios = require('axios')
 
-require('./../configs/database')
+// require('./../configs/database')
 
 //à appeler une seule fois pour créer ma base de données
 axios
