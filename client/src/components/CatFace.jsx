@@ -5,8 +5,8 @@ function CatFace(props) {
   let cat = props.cat
 
   return (
-    <div className="imageContainer">
-      <img src={cat.url} alt="cat" />
+    <div className={!cat.url ? 'imageContainer not-active' : 'imageContainer'}>
+      <img src={cat.url} alt="" />
     </div>
   )
 }

@@ -7,23 +7,22 @@ function VotePage() {
   const [catsAlreadyDisplayed, setCatsAlreadyDisplayed] = useState([])
   const [catsOnVote1, setCatsOnVote1] = useState([])
   const [catsOnVote2, setCatsOnVote2] = useState([])
-  const [message, setMessage] = useState('')
+  const [message1, setMessage1] = useState('')
+  const [message2, setMessage2] = useState('')
 
   //Pour afficher les chats de manière aléatoire tout en évitant qu'un chat déjà apparu ne réapparaisse
   function randomCats(array) {
     let randomNumber = Math.floor(Math.random() * array.length)
     let randomCat = array[randomNumber]
     if (allCats.length) {
-      if (
+      if (allCats.length === catsAlreadyDisplayed.length) {
+        return (randomCat = {})
+      } else if (
         catsAlreadyDisplayed.includes(randomCat) &&
         catsAlreadyDisplayed.length
       ) {
         console.log('already appeared')
         return randomCats(allCats)
-      }
-      if (allCats.length === catsAlreadyDisplayed.length) {
-        setMessage("Oops, il n'y a plus de chat en compétition")
-        return
       } else return randomCat
     }
   }
@@ -54,9 +53,15 @@ function VotePage() {
     setCatsOnVote2(randomCats(allCats))
     api
       .updateVote(catsOnVote1._id, catsOnVote1.score + 1)
-      .then(response =>
+      .then(response => {
         setCatsOnVote1({ ...catsOnVote1, score: response.score })
-      )
+        setMessage1('Ce chat a gagné le round précédent')
+        setMessage2('')
+        if (allCats.length === catsAlreadyDisplayed.length) {
+          setMessage1('Ce chat est le plus beau de tous!')
+          return
+        }
+      })
       .catch(err => console.log(err))
   }
 
@@ -64,19 +69,29 @@ function VotePage() {
     setCatsOnVote1(randomCats(allCats))
     api
       .updateVote(catsOnVote2._id, catsOnVote2.score + 1)
-      .then(response =>
+      .then(response => {
         setCatsOnVote2({ ...catsOnVote2, score: response.score })
-      )
+        setMessage2('Ce chat a gagné le round précédent')
+        setMessage1('')
+        if (allCats.length === catsAlreadyDisplayed.length) {
+          setMessage2('Ce chat est le plus beau de tous!')
+          return
+        }
+      })
       .catch(err => console.log(err))
   }
 
   return (
     <div id="catVote">
+      <h2>Votez pour votre chat préféré</h2>
+      <pre>{JSON.stringify(catsOnVote1)}</pre>
       <div onClick={handleOnclickCat1} className="columnCatVote left">
-        {message || <CatFace cat={catsOnVote1} />}
+        <CatFace cat={catsOnVote1} />
+        <h3>{message1}</h3>
       </div>
       <div onClick={handleOnclickCat2} className="columnCatVote right">
-        {message || <CatFace cat={catsOnVote2} />}
+        <CatFace cat={catsOnVote2} />
+        <h3>{message2}</h3>
       </div>
     </div>
   )
