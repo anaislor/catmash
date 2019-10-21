@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const CatsModel = require('./../models/Cat')
+const axios = require('axios')
 
 router.get('/allCats', (req, res, next) => {
   CatsModel.find()
